@@ -21,6 +21,7 @@ export class AuthService {
       );
 
       this.token = response.token.replace('Bearer ', '');
+      //Almacenamos el token que obtenemos del back en el localStorage
       localStorage.setItem('authToken', this.token); // Actualizamos el token en el localStorage
       console.log('Token almacenado:', this.token);
     } catch (error) {
