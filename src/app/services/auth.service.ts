@@ -41,7 +41,8 @@ export class AuthService {
 
   //Método para verificar si el token existe
   isAuthenticated(): boolean {
-    return this.token.length > 0;
+    const token = localStorage.getItem('authToken');
+    return !!token; // Retorna true si hay un token
   }
 
 
