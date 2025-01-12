@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
     this.arrProducts = [];
   }
   async ngOnInit() : Promise<void> {
+    this.checkAuthentication();
     try{
       this.arrProducts = await this.productService.getAll();
     }catch(err) {
@@ -35,6 +36,11 @@ export class HomeComponent implements OnInit {
     this.authService.logout();
     console.log('Sesión cerrada desde el componente');
     location.reload();
+  }
+
+  checkAuthentication(): void {
+    // Comprueba si el token existe en Local Storage
+    this.isAuthenticated = !!localStorage.getItem('authToken');
   }
 
 }
